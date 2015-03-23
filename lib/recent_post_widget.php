@@ -20,7 +20,7 @@ class RecentPostWidget extends WP_Widget {
 ?>
     <p>
       <label>SubSite</label>
-      <select name='subsite' />
+      <select name='subsite'>
         <?php
           foreach($sites as $val) {
             $id = $val['blog_id'];
