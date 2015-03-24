@@ -16,9 +16,12 @@ class RecentPostWidget extends WP_Widget {
     $posts = wp_get_recent_posts(array('numberposts' => 1));
     foreach($posts as $post) {
       echo "<a href='" . get_permalink($post['ID']) . "'>";
-      echo "<div class='recent_post_blogname widget-title clearfix'><span class='title-text'>" . get_bloginfo('name') . "</span></div>";
+      echo $args['before_title'];
+      echo "<div class='recent_post_blogname'>" . get_bloginfo('name') . "</span></div>";
+      echo $args['after_title'];
+      $thumbnail = get_the_post_thumbnail( $post['ID'], 'thumbnail' );
+      echo "<div class='recent_post_thumbnail".($thumbnail ? '' : ' no-image')."'>" . $thumbnail . "</div>";
       echo "<div class='recent_post_title'>" . $post['post_title'] . "</div>";
-      echo "<div class='recent_post_thumbnail'>" . get_the_post_thumbnail( $post['ID'], 'thumbnail' ) . "</div>";
       echo "</a>";
     }
     restore_current_blog();
