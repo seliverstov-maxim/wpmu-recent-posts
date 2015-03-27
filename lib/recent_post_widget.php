@@ -17,7 +17,7 @@ class RecentPostWidget extends WP_Widget {
     foreach($posts as $post) {
       echo "<a href='" . get_permalink($post['ID']) . "'>";
       echo $args['before_title'];
-      echo "<div class='recent_post_blogname'>" . get_bloginfo('name') . "</span></div>";
+      echo "<div class='title-text'>" . get_bloginfo('name') . "</span></div>";
       echo $args['after_title'];
       $thumbnail = get_the_post_thumbnail( $post['ID'], 'thumbnail' );
       echo "<div class='recent_post_thumbnail".($thumbnail ? '' : ' no-image')."'>" . $thumbnail . "</div>";
